@@ -1,5 +1,6 @@
 import { useState } from "react";
 import mockData from "./data";
+import { useNavigate } from "react-router-dom";
 export default function RentCal() {
   const [currElec, setCurrElec] = useState("");
   const [prevElec, setPrevElec] = useState("");
@@ -15,6 +16,7 @@ export default function RentCal() {
   const [unit, setUnit] = useState("");
   const [tenant, setTenant] = useState("");
   const [prevBalance, setPrevBalance] = useState("");
+  const navigate = useNavigate();
   function handleAddrChange(e) {
     setAddr(e.target.value);
   }
@@ -87,6 +89,7 @@ export default function RentCal() {
     };
     mockData.push(newEntry);
     console.log("mock updated:", mockData);
+    navigate("/dashboard");
   };
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
