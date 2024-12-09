@@ -1,7 +1,9 @@
 import mockData from "./data";
 import jsPDF from "jspdf";
+import { useState } from "react";
 // import ExportIcon from "./icons/exportIcon";
 const Dashboard = () => {
+  const [data, setData] = useState(mockData);
   const handleExport = (customer, action) => {
     const doc = new jsPDF();
 
@@ -30,6 +32,10 @@ const Dashboard = () => {
       }
     }
   };
+  const handleDelete = (index) => {
+    const updatedData = data.filter((_, i) => i !== index);
+    setData(updatedData);
+  };
   return (
     <table>
       <tbody>
@@ -48,7 +54,7 @@ const Dashboard = () => {
           <th>Tổng</th>
           <th>Xuất Dữ Liệu?</th>
         </tr>
-        {mockData.map((customer, index) => (
+        {data.map((customer, index) => (
           <tr key={index}>
             <td>{customer.address}</td>
             <td>{customer.unit}</td>
@@ -69,6 +75,12 @@ const Dashboard = () => {
               </button>
               <button onClick={() => handleExport(customer, "print")}>
                 Print
+              </button>
+              <button
+                className="delete-icon"
+                onClick={() => handleDelete(index)}
+              >
+                🗑️
               </button>
             </td>
           </tr>
