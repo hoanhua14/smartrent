@@ -32,10 +32,14 @@ const Dashboard = () => {
       }
     }
   };
-  // const handleDelete = (index) => {
-  //   const updatedData = data.filter((item)=> item.)
-  //   setData(updatedData);
-  // };
+  const handleDelete = (id) => {
+    const indexToDelete = mockData.findIndex((item) => item.id === id);
+    if (indexToDelete > -1) {
+      mockData.splice(indexToDelete, 1);
+    }
+
+    setData([...mockData]);
+  };
   return (
     <table>
       <tbody>
@@ -54,8 +58,8 @@ const Dashboard = () => {
           <th>Tổng</th>
           <th>Xuất Dữ Liệu?</th>
         </tr>
-        {data.map((customer, index) => (
-          <tr key={index}>
+        {data.map((customer) => (
+          <tr key={customer.id}>
             <td>{customer.address}</td>
             <td>{customer.unit}</td>
             <td>{customer.tenant}</td>
@@ -79,7 +83,7 @@ const Dashboard = () => {
                 </button>
                 <button
                   className="delete-icon"
-                  onClick={() => handleDelete(index)}
+                  onClick={() => handleDelete(customer.id)}
                 >
                   🗑️
                 </button>

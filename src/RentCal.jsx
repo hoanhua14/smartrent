@@ -65,6 +65,7 @@ export default function RentCal() {
     setPrevBalance(e.target.value); // New handler for previous balance
   };
   let categories = [waterBill, elecBill, rent, garbage, misc, prevBalance];
+  let idGenerator = 1;
   const calculateTotal = (e) => {
     e.preventDefault();
 
@@ -74,6 +75,7 @@ export default function RentCal() {
     );
     setTotal(totalSum);
     const newEntry = {
+      id: idGenerator++,
       address: addr,
       unit: unit,
       tenant: tenant,
