@@ -32,10 +32,10 @@ const Dashboard = () => {
       }
     }
   };
-  const handleDelete = (index) => {
-    const updatedData = data.filter((_, i) => i !== index);
-    setData(updatedData);
-  };
+  // const handleDelete = (index) => {
+  //   const updatedData = data.filter((item)=> item.)
+  //   setData(updatedData);
+  // };
   return (
     <table>
       <tbody>
@@ -69,19 +69,21 @@ const Dashboard = () => {
             <td>{customer.prevBalance}</td>
             <td>{customer.total}</td>
             <td>
-              {/* <ExportIcon customer={customer} width={30} height={30} /> */}
-              <button onClick={() => handleExport(customer, "save")}>
-                Save as PDF
-              </button>
-              <button onClick={() => handleExport(customer, "print")}>
-                Print
-              </button>
-              <button
-                className="delete-icon"
-                onClick={() => handleDelete(index)}
-              >
-                🗑️
-              </button>
+              <div className="button-container">
+                {/* <ExportIcon customer={customer} width={30} height={30} /> */}
+                <button onClick={() => handleExport(customer, "save")}>
+                  Save as PDF
+                </button>
+                <button onClick={() => handleExport(customer, "print")}>
+                  Print
+                </button>
+                <button
+                  className="delete-icon"
+                  onClick={() => handleDelete(index)}
+                >
+                  🗑️
+                </button>
+              </div>
             </td>
           </tr>
         ))}

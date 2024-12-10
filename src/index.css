@@ -82,7 +82,7 @@ th,
 td {
   border: 1px solid #ddd;
   padding: 8px;
-  text-align: left;
+  text-align: center;
 }
 
 th {
@@ -101,12 +101,11 @@ tr:nth-child(even) {
 tr:hover {
   background-color: #e5e5e5;
 }
-.delete-icon {
-  display: none;
+.button-container {
+  display: flex;
+  align-items: center;
 }
-tr:hover .delete-icon {
-  display: inline;
-}
+
 form {
   width: 50%;
   border: 2px #4335a7 solid;
